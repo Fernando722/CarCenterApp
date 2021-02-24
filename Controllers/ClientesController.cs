@@ -30,10 +30,8 @@ namespace CarCenterApp.Controllers
             }
             return Ok("Cliente agregado satisfactoriamente");
         }
-
         //Consultar Clientes
         [HttpGet]
-
         public IEnumerable<ClienteRequest> ListarClientes()
         {
             using (Models.CarCenterDB db = new Models.CarCenterDB())
@@ -55,7 +53,58 @@ namespace CarCenterApp.Controllers
                 return clientes;
             }
         }
-    }
-   
+        [HttpPost]
+        public IHttpActionResult EliminarCliente(int id)
+        {
+            if (id < 0)
+            { 
+                return BadRequest("Cliente no válido");
+            }
+            using (var db = new CarCenterDB())
+            {
+                var cliente = db.Clientes
+                    .Where(s => s.idCliente == id)
+                    .FirstOrDefault();
 
+                db.Entry(cliente).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+            }
+
+            return Ok();
+        }
+
+        public IHttpActionResult ActualizarCliente(ClienteRequest cliente)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("No es un cliente válido");
+
+            using (var db = new CarCenterDB())
+            {
+                var clienteExistente = db.Clientes.Where(s => s.idCliente == cliente.idCliente)
+                                                        .FirstOrDefault<Clientes>();
+
+                if (clienteExistente != null)
+                {
+                    clienteExistente.PrimerNombre = cliente.PrimerNombre;
+                    clienteExistente.SegundoNombre = cliente.SegundoNombre;
+                    clienteExistente.PrimerApellido = cliente.PrimerApellido;
+                    clienteExistente.SegundoApellido = cliente.SegundoApellido;
+                    clienteExistente.TipoDocumento = cliente.TipoDocumento;
+                    clienteExistente.NumeroDocumento = cliente.NumeroDocumento;
+                    clienteExistente.NumeroCelular = cliente.NumeroCelular;
+                    clienteExistente.Direccion = cliente.Direccion;
+                    clienteExistente.CorreoElectronico = cliente.CorreoElectronico;
+                    clienteExistente.Presupuesto = cliente.Presupuesto;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+
+            return Ok();
+        }
+
+    }
 }
