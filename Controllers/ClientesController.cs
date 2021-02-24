@@ -1,11 +1,16 @@
-﻿using System.Web.Http;
+﻿using CarCenterApp.Models;
+using CarCenterApp.Models.Request;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 
 namespace CarCenterApp.Controllers
 {
     public class ClientesController : ApiController
     {
+        //Agregar Cliente
         [HttpPost]
-        public IHttpActionResult AgregarCliente(Models.Request.ClienteRequest model) 
+        public IHttpActionResult AgregarCliente(ClienteRequest model)
         {
             using (Models.CarCenterDB db = new Models.CarCenterDB())
             {
@@ -25,5 +30,32 @@ namespace CarCenterApp.Controllers
             }
             return Ok("Cliente agregado satisfactoriamente");
         }
+
+        //Consultar Clientes
+        [HttpGet]
+
+        public IEnumerable<ClienteRequest> ListarClientes()
+        {
+            using (Models.CarCenterDB db = new Models.CarCenterDB())
+            {
+                var clientes = db.Clientes.Select(x => new ClienteRequest
+                {
+                    PrimerNombre = x.PrimerNombre,
+                    SegundoNombre = x.SegundoNombre,
+                    PrimerApellido = x.PrimerApellido,
+                    SegundoApellido = x.SegundoApellido,
+                    TipoDocumento = x.TipoDocumento,
+                    NumeroDocumento = x.NumeroDocumento,
+                    NumeroCelular = x.NumeroCelular,
+                    Direccion = x.Direccion,
+                    CorreoElectronico = x.CorreoElectronico,
+                    Presupuesto = x.Presupuesto
+
+                }).ToList();
+                return clientes;
+            }
+        }
     }
+   
+
 }
