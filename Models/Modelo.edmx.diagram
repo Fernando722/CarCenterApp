@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0c6c63a16317454baffd0d219f055c60" Name="Diagram1">
+        <EntityTypeShape EntityType="CarCenterDBModel.Clientes" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.DetalleFactura" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.DetalleRepuestosMantenimientos" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.DetalleServiciosMantenimientos" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.Facturas" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.Mantenimientos" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.Mecanicos" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.Repuestos" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.Servicios" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarCenterDBModel.Vehiculos" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="CarCenterDBModel.FK_Facturas_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_Vehiculos_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_DetalleFactura_Facturas" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_DetalleFactura_Mantenimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_DetalleRepuestosMantenimientos_Mantenimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_DetalleRepuestosMantenimientos_Repuestos" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_DetalleServiciosMantenimientos_Mantenimientos" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_DetalleServiciosMantenimientos_Servicios" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_Mantenimientos_Mecanicos" ManuallyRouted="false" />
+        <AssociationConnector Association="CarCenterDBModel.FK_Mantenimientos_Vehiculos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
